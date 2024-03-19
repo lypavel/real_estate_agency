@@ -14,7 +14,7 @@ class FlatAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
     raw_id_fields = ('liked_by',)
 
-    list_display = ('address', 'owner_pure_phone', 'price', 'new_building',
+    list_display = ('address', 'price', 'new_building',
                     'construction_year')
     list_editable = ('new_building',)
     list_filter = ('new_building', 'rooms_number', 'has_balcony')
