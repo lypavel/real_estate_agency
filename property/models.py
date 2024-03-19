@@ -100,7 +100,7 @@ class Complaint(models.Model):
 
 
 class Owner(models.Model):
-    name = models.CharField('ФИО владельца', max_length=200)
+    name = models.CharField('ФИО владельца', max_length=200, db_index=True)
     owner_pure_phone = PhoneNumberField(
         'Нормализованный номер телефона',
         null=True,
@@ -110,7 +110,8 @@ class Owner(models.Model):
         Flat,
         related_name='owners',
         verbose_name='Квартиры в собственности',
-        blank=True
+        blank=True,
+        db_index=True
     )
 
     class Meta:
