@@ -106,6 +106,7 @@ class Owner(models.Model):
         null=True,
         blank=True
     )
+
     flats = models.ManyToManyField(
         Flat,
         related_name='owners',
