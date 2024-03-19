@@ -53,6 +53,12 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
 
+    liked_by = models.ManyToManyField(
+        User,
+        related_name='liked_flats',
+        verbose_name='Кто лайкнул'
+    )
+
     class Meta:
         verbose_name = 'Квартира'
         verbose_name_plural = 'Квартиры'
