@@ -91,7 +91,7 @@ class Complaint(models.Model):
         verbose_name_plural = 'Жалобы'
 
     def __str__(self) -> str:
-        return self.flat.__str__()
+        return self.flat
 
 
 class Owner(models.Model):
