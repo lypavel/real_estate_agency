@@ -6,7 +6,8 @@ from phonenumber_field.modelfields import PhoneNumber
 
 def fill_owner_pure_phone(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all()
+    for flat in flats.iterator():
         owners_number = PhoneNumber.from_string(
             flat.owners_phonenumber,
             region='RU'

@@ -5,9 +5,10 @@ from django.db import migrations
 
 def fill_owners_flats(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
+    owners = Owner.objects.all()
     Flat = apps.get_model('property', 'Flat')
 
-    for owner in Owner.objects.all():
+    for owner in owners.iterator():
         flats = Flat.objects.filter(owner=owner.name)
         owner.flats.set(flats)
         owner.save()
