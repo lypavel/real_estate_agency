@@ -7,12 +7,14 @@ def define_new_buildings(apps, schema_editor):
     new_building_year_limit = 2015
 
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
-        if flat.construction_year >= new_building_year_limit:
-            flat.new_building = True
-        else:
-            flat.new_building = False
-        flat.save()
+
+    Flat.objects.filter(
+        construction_year__gte=new_building_year_limit
+    ).update(new_building=True)
+
+    Flat.objects.filter(
+        construction_year__lt=new_building_year_limit
+    ).update(new_building=False)
 
 
 class Migration(migrations.Migration):
